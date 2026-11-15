@@ -39,4 +39,4 @@ useEffect(() => {
 
 ## License
 
-MIT. For more information see[LICENSE](LICENSE)
+MIT. For more information see [LICENSE](LICENSE)
