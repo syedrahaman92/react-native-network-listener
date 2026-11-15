@@ -14,11 +14,20 @@ npm install react-native-network-listener
 
 
 ```js
-import { multiply } from 'react-native-network-listener';
+import { networkListener } from 'react-native-network-listener';
 
 // ...
 
-const result = multiply(3, 7);
+useEffect(() => {
+    const unsubscribe = networkListener((status) => {
+        console.log(status)
+    });
+    
+    return () => {
+      unsubscribe();
+      
+    };
+  }, []);
 ```
 
 
@@ -30,8 +39,4 @@ const result = multiply(3, 7);
 
 ## License
 
-MIT
-
----
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
+MIT. For more information see[LICENSE](LICENSE)
