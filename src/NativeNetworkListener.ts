@@ -1,7 +1,16 @@
-import { TurboModuleRegistry, type TurboModule } from 'react-native';
+import {CodegenTypes, TurboModuleRegistry, type TurboModule } from 'react-native';
+
+export type NetworkStatus = {
+  isConnected: boolean;
+  type: string;
+};
 
 export interface Spec extends TurboModule {
-  multiply(a: number, b: number): number;
+  startNetworkListening(): void;
+  stopNetworkListening(): void;
+
+  readonly networkStatusChanged: CodegenTypes.EventEmitter<NetworkStatus>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('NetworkListener');
+

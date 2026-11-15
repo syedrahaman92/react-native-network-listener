@@ -1,1 +1,1 @@
-export { multiply } from './multiply';
+export { networkListener } from './networkListener';
