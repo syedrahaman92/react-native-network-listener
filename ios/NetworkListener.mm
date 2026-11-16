@@ -1,10 +1,20 @@
 #import "NetworkListener.h"
 
-@implementation NetworkListener
-- (NSNumber *)multiply:(double)a b:(double)b {
-  NSNumber *result = @(a * b);
+@implementation NetworkListener{
+  NetworkListenerSwift* _networkListener;
+}
 
-  return result;
+- (instancetype)init {
+  if (self = [super init]) {
+    __weak NetworkListener* weakSelf = self;
+      _networkListener = [[NetworkListenerSwift alloc]
+                          initWithNetworkStatusChanged:^(NSDictionary * data) {
+        if (weakSelf) {
+          [weakSelf emitNetworkStatusChanged:data];
+        }
+      }];
+  }
+  return self;
 }
 
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
@@ -16,6 +26,14 @@
 + (NSString *)moduleName
 {
   return @"NetworkListener";
+}
+
+- (void)startNetworkListening {
+  [_networkListener startNetworkListening];
+}
+
+- (void)stopNetworkListening { 
+  [_networkListener stopNetworkListening];
 }
 
 @end

@@ -1,5 +1,6 @@
 #import <NetworkListenerSpec/NetworkListenerSpec.h>
+#import "NetworkListener-Swift.h"
 
-@interface NetworkListener : NSObject <NativeNetworkListenerSpec>
+@interface NetworkListener : NativeNetworkListenerSpecBase <NativeNetworkListenerSpec>
 
 @end
