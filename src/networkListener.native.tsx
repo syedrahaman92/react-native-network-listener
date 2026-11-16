@@ -1,6 +1,6 @@
-import NetworkListener from './NativeNetworkListener';
+import NetworkListener, { type NetworkStatus } from './NativeNetworkListener';
 
-export const networkListener = (callback: (status: any) => void) => {
+export const networkListener = (callback: (status: NetworkStatus) => void) => {
   NetworkListener.startNetworkListening();
   const subscription = NetworkListener.networkStatusChanged(callback);
   return () => {
@@ -8,4 +8,3 @@ export const networkListener = (callback: (status: any) => void) => {
     subscription.remove();
   };
 };
-

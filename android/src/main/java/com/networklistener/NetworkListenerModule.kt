@@ -11,8 +11,9 @@ import android.util.Log
 import com.facebook.react.bridge.Arguments.createMap
 import com.facebook.react.bridge.ReactApplicationContext
 
-class NetworkListenerModule(reactContext: ReactApplicationContext) :
+class NetworkListenerModule(val reactContext: ReactApplicationContext) :
   NativeNetworkListenerSpec(reactContext) {
+
 
   override fun getName() = NAME
 
@@ -74,5 +75,6 @@ class NetworkListenerModule(reactContext: ReactApplicationContext) :
 
   companion object {
     const val NAME = NativeNetworkListenerSpec.NAME
+    var networkCallback: NetworkCallback? = null
   }
 }
