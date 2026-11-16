@@ -1,6 +1,6 @@
 # react-native-network-listener
 
-Listen to device network. This library is created using TurboModule to use it in react-native. Easy to implement and easy to make the the changes native
+Listen to device network. This library is created using TurboModule to use it in react-native. Easy to implement and easy to make the native android/ios changes
 
 ## Installation
 
@@ -18,15 +18,15 @@ import { networkListener } from 'react-native-network-listener';
 
 // ...
 
-useEffect(() => {
-    const unsubscribe = networkListener((status) => {
-        console.log(status)
-    });
-    
-    return () => {
-      unsubscribe();
+  useEffect(() => {
+      const unsubscribe = networkListener((status) => {
+          console.log(status)
+      });
       
-    };
+      return () => {
+        unsubscribe();
+        
+      };
   }, []);
 ```
 
